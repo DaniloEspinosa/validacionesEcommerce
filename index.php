@@ -92,23 +92,30 @@
 
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ECommerce</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Tutti Frutti</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECommerce</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="width-content">
+
+  <div class="container">
+
+    <header class="width-content">
+      <h1><span>🍍🍉</span> Tutti Frutti <span>🍓🥑</span></h1>
     </header>
-    <main>
+
+    <main class="width-content">
+
       <section id="signin">
         <h2>Formulario de acceso</h2>
         <form action="php/signin.php" method="post">
           <div>
             <label for="email">Email: </label>
-            <input type="text" name="email" id="email" />
+            <input type="email" name="email" id="email" />
           </div>
           <div>
             <label for="password">Contraseña </label>
@@ -125,44 +132,44 @@
       <section id="signup">
         <h2>Por favor, introduzca sus datos</h2>
         <form id="signupForm">
-          <fieldset>
-            <legend>Datos personales</legend>
+          <div class="nuevo-usuario">
+            <h3>Datos personales</h3>
             <div>
-              <label for="nombre">Nombre:</label>
-              <input type="text" name="nombre" id="nombre" required min="2" max="20"/>
+              <label for="nombreUp">Nombre:</label>
+              <input type="text" name="nombreUp" id="nombreUp" required min="2" max="20" />
             </div>
 
             <div>
               <label for="apellidos">Apellidos:</label>
-              <input type="text" name="apellidos" id="apellidos" required min="2" max="50"/>
+              <input type="text" name="apellidos" id="apellidos" required min="2" max="50" />
             </div>
 
             <div>
               <label for="password1">Contraseña elegida:</label>
-              <input type="password" name="password1" id="password1" required min="8" max="20"/>
+              <input type="password" name="password1" id="password1" required min="8" max="20" />
             </div>
 
             <div>
               <label for="password2">Confirme la contraseña:</label>
-              <input type="password" name="password2" id="password2"  required min="8" max="20"/>
+              <input type="password" name="password2" id="password2" required min="8" max="20" />
             </div>
             <div id="errorPassword"></div>
             <div>
-              <label for="email">Email:</label>
-              <input type="email" name="email" id="email" required/>
+              <label for="emailUp">Email:</label>
+              <input type="emailUp" name="emailUp" id="emailUp" required />
             </div>
-          </fieldset>
+          </div>
 
-          <fieldset>
-            <legend>Datos de la compra</legend>
+          <div class="nuevo-usuario">
+            <h3>Datos de la compra</h3>
             <div>
               <label for="nif">NIF:</label>
-              <input type="text" name="nif" id="nif" min="9" max="9" required/>
+              <input type="text" name="nif" id="nif" min="9" max="9" required />
             </div>
 
             <div>
               <label for="telefono">Teléfono</label>
-              <input type="text" name="telefono" id="telefono"  min="9" max="9" required/>
+              <input type="text" name="telefono" id="telefono" min="9" max="9" required />
             </div>
 
             <div>
@@ -172,19 +179,23 @@
 
             <div>
               <label for="ciudad">Ciudad</label>
-              <input type="text" name="ciudad" id="ciudad" min="2" max="100"/>
+              <input type="text" name="ciudad" id="ciudad" min="2" max="100" />
             </div>
-          </fieldset>
+          </div>
+
           <div>
             <button type="submit">Enviar datos</button>
             <button type="reset">Borrar datos</button>
             <button type="button" onclick="volverInicio()">Cancelar</button>
           </div>
+
         </form>
       </section>
     </main>
     <script src="js/app.js"></script>
-  </body>
+    <script src="js/corregirNombre.js"></script>
+
+  </div>
+</body>
+
 </html>
-
-

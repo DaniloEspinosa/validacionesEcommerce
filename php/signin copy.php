@@ -1,12 +1,11 @@
 <?php
-session_start();
 
 require_once("connection.php");
 
 $email = $_POST["email"];
 $password_user = $_POST["password"];
 
-$select = "SELECT * FROM clientes WHERE email = ?";
+$select = "SELECT password FROM clientes WHERE email = ?";
 $query = $conn->prepare($select);
 $query->execute([$email]);
 $result = $query->fetch();
@@ -15,19 +14,13 @@ $result = $query->fetch();
 
 if (!$result) {
     echo "Usuario o contraseña incorrectos.";
-    header("Location: index.php");
-    // die();
+    die();
 }
 
-// Login ha sido correcto y obtenemos los datos del cliente
 $password_hash = $result["password"];
 if(password_verify($password_user, $password_hash)) {
-    // echo "Usuario y contraseña correctos.";
-    $_SESSION["nombre_cliente"]= $result["nombre_cliente"];
-    $_SESSION["apellidos_cliente"]= $result["apellidos_cliente"];
-    $_SESSION["id_cliente"]= $result["id_cliente"];
+    echo "Usuario y contraseña correctos.";
     header("Location: ecommerce.php");
 } else {
     echo "Usuario y/o contraseña incorrectos";
 }
-
