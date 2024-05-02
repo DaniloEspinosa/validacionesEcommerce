@@ -1,26 +1,30 @@
 <?php
 
-require_once("connection.php");
+// require_once("connection.php");
 
-$_POST = json_decode(file_get_contents("php: //input"), true);
+// echo "PHP obtiene: ".file_get_contents("php://input");
+
+
+
+$data = json_decode(file_get_contents("php: //input"), true);
 
 // Comprobar el post
 // echo "<pre>";
-// var_dump($_POST);
+// var_dump($data);
 // echo "</echo>";
 
-$nombre = $_POST["nombre"];
-$apellidos = $_POST["apellidos"];
-$password1 = $_POST["password1"];
-$password2 = $_POST["password2"];
-$email = $_POST["email"];
-$nif = $_POST["nif"];
-$telefono = $_POST["telefono"];
-$direccion = $_POST["direccion"];
-$ciudad = $_POST["ciudad"];
+$nombre = $data["nombre"];
+$apellidos = $data["apellidos"];
+$password = $data["password1"];
+// $password2 = $data["password2"];
+$email = $data["email"];
+$nif = $data["nif"];
+$telefono = $data["telefono"];
+$direccion = $data["direccion"];
+$ciudad = $data["ciudad"];
 
 // Password encriptado
-$password1 = password_hash($password1, PASSWORD_DEFAULT);
+$password_encriptado = password_hash($password, PASSWORD_DEFAULT);
 
 // echo strlen($password1); Solo fue utilizado para ver la longitud del password
 
@@ -77,7 +81,7 @@ $id_ciudad = $result["id_ciudad"];
 
 $insert = "INSERT INTO clientes (nombre_cliente, apellidos_cliente, password, email, nif, telefono, direccion_cliente, id_ciudad) VALUES (?,?,?,?,?,?,?,?)";
 $query = $conn->prepare($insert);
-$query->execute([$nombre, $apellidos, $password1, $email, $nif, $telefono, $direccion, $id_ciudad]);
+$query->execute([$nombre, $apellidos, $password_encriptado, $email, $nif, $telefono, $direccion, $id_ciudad]);
 
 
 $conn = null;
